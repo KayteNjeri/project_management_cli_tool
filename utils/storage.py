@@ -10,7 +10,7 @@ def load_data():
     try:
         with open(FILE, "r") as f:
             return json.load(f)
-    except (json.JSONDecodeError, FeleNotFoundError):
+    except (json.JSONDecodeError, FileNotFoundError):
         return {"users": []}
 
 def save_data(data):
