@@ -12,5 +12,14 @@ class Task:
     def complete(self):
         self.status = "Completed"
 
+    def to_dict(self):
+        return {
+            "title": self.title,
+            "status": self.status,
+            "assigned_to": self.assigned_to
+        }
+
     def __repr__(self):
         return f"{self.title} ({self.status})"
+    
+    

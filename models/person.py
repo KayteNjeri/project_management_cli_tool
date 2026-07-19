@@ -6,4 +6,7 @@ class Person:
         Person.id_counter += 1
         self.name = name
 
+    def __str__(self):
+        return self.name
+
         
