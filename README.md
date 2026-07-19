@@ -238,7 +238,7 @@ python main.py list-projects --user alex@gmail.com
 ┏━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓
 ┃ Title     ┃ Description     ┃ Due Date     ┃
 ┣━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫
-┃ CLI Tool  ┃ Project Tracker ┃ 2026-08-20   ┃
+┃ CLI Tool  ┃ Project Tracker ┃ 2026-08-15   ┃
 ┗━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━┛
 ```
 
@@ -280,9 +280,7 @@ Project not found.
 Marks a task as completed within a specified project.
 
 ```bash
-python main.py complete-task \
---project "CLI Tool" \
---title "Create CLI"
+python main.py complete-task --project "CLI Tool" --title "Create CLI"
 ```
 
 **Example Output**

@@ -60,7 +60,7 @@ def main():
         for user in data["users"]:
             if user["email"] == args.email:
                 print("[red]User already exists.[/red]")
-                exit()
+                return
 
         user = User.from_dict({
             "name": args.name,
