@@ -1,3 +1,5 @@
+from models.task import Task
+
 class Project:
     id_counter = 1
 
@@ -25,8 +27,25 @@ class Project:
             "title": self.title,
             "description": self.description,
             "due_date": self.due_date,
-            "tasks": [task.to_dict() for task in self.tasks]
+            "tasks": [task.to_dict() 
+                      for task in self.tasks]
         }
+    
+    @classmethod
+    def from_dict(cls, data):
+
+        project = cls(
+            data["title"],
+            data["description"],
+            data["due_date"]
+        )
+
+        for task_data in data.get("tasks", []):
+            project.add_a_task(
+                Task.from_dict(task_data)
+            )
+
+        return project
 
     def __repr__(self):
         return self.title

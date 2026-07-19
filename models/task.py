@@ -19,8 +19,21 @@ class Task:
         return {
             "title": self.title,
             "status": self.status,
-            "assigned_to": self.assigned_to.name if self.assigned_to else None
+            "assigned_to": self.assigned_to.name 
+            if self.assigned_to else None
         }
+    
+    @classmethod
+    def from_dict(cls, data):
+
+        task = cls(
+            data["title"],
+            data.get("assigned_to")
+        )
+
+        task.status = data["status"]
+
+        return task
 
     def __repr__(self):
         return f"{self.title} ({self.status})"

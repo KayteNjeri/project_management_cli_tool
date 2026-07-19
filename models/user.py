@@ -23,8 +23,25 @@ class User(Person):
         return {
             "name": self.name,
             "email": self.email,
-            "projects": []
+            "projects": [project.to_dict()
+            for project in self.projects]
         }
+    
+    @classmethod
+    def from_dict(cls, data):
+        from models.project import Project
+
+        user = cls(
+            data["name"],
+            data["email"]
+        )
+
+        for project_data in data.get("projects", []):
+            user.add_a_project(
+                Project.from_dict(project_data)
+            )
+
+        return user
 
     def __repr__(self):
         return f"{self.name} ({self.email})"
