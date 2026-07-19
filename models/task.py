@@ -12,11 +12,14 @@ class Task:
     def complete(self):
         self.status = "Completed"
 
+    def assign(self, user):
+        self.assigned_to = user
+
     def to_dict(self):
         return {
             "title": self.title,
             "status": self.status,
-            "assigned_to": self.assigned_to
+            "assigned_to": self.assigned_to.name if self.assigned_to else None
         }
 
     def __repr__(self):

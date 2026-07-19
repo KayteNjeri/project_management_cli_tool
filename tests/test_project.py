@@ -36,7 +36,7 @@ def test_complete_task():
 
     task = Task("Create CLI")
 
-    project.add_task(task)
+    project.add_a_task(task)
 
     project.complete_task("Create CLI")
 
