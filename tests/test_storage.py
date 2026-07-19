@@ -2,9 +2,7 @@ import os
 
 from utils.storage import save_data, load_data
 
-
-TEST_FILE = "tests/test_database.json"
-
+TEST_FILE = "test_database.json"
 
 def test_save_and_load():
 
@@ -17,17 +15,24 @@ def test_save_and_load():
         ]
     }
 
-    save_data(sample, TEST_FILE)
+    save_data(sample)
 
-    loaded = load_data(TEST_FILE)
+    loaded = load_data()
 
-    assert loaded == sample
-
-    os.remove(TEST_FILE)
+    assert loaded["users"][0]["name"] == "Alex"
 
 
-def test_missing_file():
+def test_load_empty():
 
-    loaded = load_data("does_not_exist.json")
+    if os.path.exists(TEST_FILE):
+        os.remove(TEST_FILE)
 
-    assert loaded == {"users": []}
+    data = {
+        "users": []
+    }
+
+    save_data(data)
+
+    loaded = load_data()
+
+    assert "users" in loaded

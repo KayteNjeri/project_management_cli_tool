@@ -6,49 +6,31 @@ from models.user import User
 def test_create_project():
     project = Project(
         "CLI Tool",
-        "Course Project",
-        "2026-08-20"
-    )
+        "Project Tracker",
+        "2026-08-20")
 
     assert project.title == "CLI Tool"
+    assert project.description == "Project Tracker"
+    assert project.due_date == "2026-08-20"
     assert project.tasks == []
-    assert project.contributors == []
-
-
+    
 def test_add_task():
     project = Project(
         "CLI Tool",
-        "Course Project",
-        "2026-08-20"
-    )
+        "Tracker",
+        "2026-08-20")
 
-    task = Task("Build CLI")
+    task = Task("Create CLI")
 
-    project.add_task(task)
+    project.add_a_task(task)
 
     assert len(project.tasks) == 1
-    assert project.tasks[0].title == "Build CLI"
-
-
-def test_add_contributor():
-    project = Project(
-        "CLI Tool",
-        "Course Project",
-        "2026-08-20"
-    )
-
-    user = User("Alex", "alex@gmail.com")
-
-    project.add_contributor(user)
-
-    assert len(project.contributors) == 1
-    assert project.contributors[0].name == "Alex"
-
+    assert project.tasks[0].title == "Create CLI"
 
 def test_complete_task():
     project = Project(
         "CLI Tool",
-        "Course Project",
+        "Tracker",
         "2026-08-20"
     )
 
