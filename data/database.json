@@ -1,9 +1,22 @@
 {
     "users": [
-        {
+              {
             "name": "Alex",
             "email": "alex@gmail.com",
-            "projects": []
+            "projects": [
+                {
+                    "title": "CLI Tool",
+                    "description": "Project Tracker",
+                    "due_date": "2026-08-15",
+                    "tasks": [
+                        {
+                            "title": "Create CLI",
+                            "status": "Completed",
+                            "assigned_to": null
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }

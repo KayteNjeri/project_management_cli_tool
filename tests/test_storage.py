@@ -15,9 +15,9 @@ def test_save_and_load():
         ]
     }
 
-    save_data(sample)
+    save_data(sample, TEST_FILE)
 
-    loaded = load_data()
+    loaded = load_data(TEST_FILE)
 
     assert loaded["users"][0]["name"] == "Alex"
 

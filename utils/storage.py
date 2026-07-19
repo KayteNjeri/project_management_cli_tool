@@ -3,16 +3,18 @@ import os
 
 FILE = "data/database.json"
 
-def load_data():
-    if not os.path.exists(FILE):
+# Loads project data from the JSON file
+def load_data(filename=FILE):
+    if not os.path.exists(filename):
         return {"users": []}
 
     try:
-        with open(FILE, "r") as f:
+        with open(filename, "r") as f:
             return json.load(f)
     except (json.JSONDecodeError, FileNotFoundError):
         return {"users": []}
 
-def save_data(data):
-    with open(FILE, "w") as f:
+# Saves application data to the JSON file
+def save_data(data, filename=FILE):
+    with open(filename, "w") as f:
         json.dump(data, f, indent=4)

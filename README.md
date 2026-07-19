@@ -142,11 +142,13 @@ python main.py --help
 
 ### 👤 Add a User
 
+Creates a new user in the system by providing a name and a valid email address. The user is then stored in the JSON database.
+
 ```bash
 python main.py add-user --name "Alex" --email "alex@gmail.com"
 ```
 
-Example output
+**Example Output**
 
 ```
 User 'Alex' added successfully.
@@ -154,52 +156,155 @@ User 'Alex' added successfully.
 
 ---
 
-### 👤 Test Duplicate Users
+### ⚠️ Test Duplicate Users
+
+Attempts to create a user with an email address that already exists in the system. The application validates the email and prevents duplicate user records.
 
 ```bash
 python main.py add-user --name "Alex" --email "alex@gmail.com"
+```
+
+**Expected Output**
+
+```
+User already exists.
 ```
 
 ---
 
 ### 📋 List Users
 
+Displays all users currently registered in the system.
+
 ```bash
 python main.py list-users
+```
+
+**Example Output**
+
+```
+┏━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━┓
+┃ Name       ┃ Email            ┃
+┣━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━┫
+┃ Alex       ┃ alex@gmail.com   ┃
+┗━━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━━┛
 ```
 
 ---
 
 ### 📁 Add a Project
 
+Creates a new project and assigns it to an existing user using the user's email address.
+
 ```bash
 python main.py add-project --user alex@gmail.com --title "CLI Tool" --description "Project Tracker" --due-date "2026-08-15"
+```
+
+**Example Output**
+
+```
+Project 'CLI Tool' added.
+```
+
+---
+
+### ❌ Add a Project to a Non-existent User
+
+Attempts to assign a project to a user that does not exist.
+
+```bash
+python main.py add-project --user jane@gmail.com --title "CLI Tool" --description "Project Tracker" --due-date "2026-08-20"
+```
+
+**Expected Output**
+
+```
+User not found.
 ```
 
 ---
 
 ### 📂 List Projects
 
+Displays all projects assigned to a specific user.
+
 ```bash
 python main.py list-projects --user alex@gmail.com
+```
+
+**Example Output**
+
+```
+┏━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┓
+┃ Title     ┃ Description     ┃ Due Date     ┃
+┣━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━╋━━━━━━━━━━━━━━┫
+┃ CLI Tool  ┃ Project Tracker ┃ 2026-08-20   ┃
+┗━━━━━━━━━━━┻━━━━━━━━━━━━━━━━━┻━━━━━━━━━━━━━━┛
 ```
 
 ---
 
 ### ✅ Add a Task
 
+Adds a new task to an existing project.
+
 ```bash
-python main.py add-task --project "CLI Tool" --title "Build CLI"
+python main.py add-task --project "CLI Tool" --title "Create CLI"
+```
+
+**Example Output**
+
+```
+Task added successfully.
+```
+
+---
+### ❌ Add a Task to a Non-existent Project
+
+Attempts to add a task to a project that is not in the system.
+
+```bash
+python main.py add-task --project "Unknown Project" --title "Create CLI"
+```
+
+**Expected Output**
+
+```
+Project not found.
 ```
 
 ---
 
 ### ✔️ Complete a Task
 
+Marks a task as completed within a specified project.
+
 ```bash
 python main.py complete-task \
 --project "CLI Tool" \
 --title "Create CLI"
+```
+
+**Example Output**
+
+```
+Task completed.
+```
+
+---
+
+### ❌ Complete a Non-existent Task
+
+Attempts to mark a task as completed when it does not exist in the specified project.
+
+```bash
+python main.py complete-task --project "CLI Tool" --title "Unknown Task"
+```
+
+**Expected Output**
+
+```
+Task not found.
 ```
 
 ---
